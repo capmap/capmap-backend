@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628193419) do
+ActiveRecord::Schema.define(version: 20160629175049) do
 
   create_table "videos", force: :cascade do |t|
     t.string   "video_file_name"
     t.string   "video_content_type"
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
+    t.decimal  "latitude",           precision: 15, scale: 10, default: 25.7516
+    t.decimal  "longitude",          precision: 15, scale: 10, default: -80.167
   end
 
 end

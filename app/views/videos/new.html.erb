@@ -1,4 +1,6 @@
 <%= form_for @video do |form| %>
   <%= form.file_field :video %>
+  <%= form.text_field :latitude %>
+  <%= form.text_field :longitude %>
   <%= form.submit :Upload %>
 <% end %>
