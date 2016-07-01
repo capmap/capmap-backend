@@ -11,7 +11,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = Video.new(video: params[:video], latitude: params[:latitude], longitude: params[:longitude])
     if @video.save
       redirect_to @video
     else
@@ -32,10 +32,6 @@ class VideosController < ApplicationController
   end
 
   private
-
-    def video_params
-      params.require(:video).permit(:video, :latitude, :longitude)
-    end
 
     def set_video
       @video = Video.find(params[:id])

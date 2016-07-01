@@ -1,18 +1,18 @@
 <div class="center-block video-upload">
-<%= form_for @video do |form| %>
+<%= form_for @video, html: {multipart: true} do %>
   <div class="form-group">
-    <%= form.file_field :video, class: ['btn' 'btn-default' 'btn-file'] %>
+    <%= file_field_tag :video, class: ['btn' 'btn-default' 'btn-file'] %>
   </div>
   <div class="form-group">
-    <%= form.label :latitude, 'Latitude' %>
-    <%= form.text_field :latitude, value: '' %>
+    <%= label_tag :latitude, 'Latitude' %>
+    <%= text_field_tag :latitude %>
   </div>
   <div class="form-group">
-    <%= form.label :latitude, 'Longitude' %>
-    <%= form.text_field :longitude, value: '' %>
+    <%= label_tag :latitude, 'Longitude' %>
+    <%= text_field_tag :longitude %>
   </div>
   <div class="form-group">
-    <%= form.submit :Upload, class: ['btn-lg', 'btn-primary'] %>
+    <%= submit_tag :Upload, class: ['btn-lg', 'btn-primary'] %>
   </div>
 <% end %>
 </div>
