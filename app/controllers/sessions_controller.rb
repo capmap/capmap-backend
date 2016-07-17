@@ -4,7 +4,10 @@ class SessionsController < ApplicationController
   def create
     if google?
       @user = User.find_or_create_by(oauth_google: auth_hash.uid)
+      session[:current_user_id] = @user.id
     end
+
+    render formats: :json
   end
 
   protected
