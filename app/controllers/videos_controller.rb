@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :error_on_bad_token, only: :index
   skip_before_filter :verify_authenticity_token
 
   def index
@@ -35,5 +36,13 @@ class VideosController < ApplicationController
 
     def set_video
       @video = Video.find(params[:id])
+    end
+
+    def error_on_bad_token
+      logger.info(params[:sessionKey].present?)
+      logger.info(current_user == nil)
+      if params[:sessionKey].present? && current_user == nil
+        render text: 'Bad session token', status: '400'
+      end
     end
 end

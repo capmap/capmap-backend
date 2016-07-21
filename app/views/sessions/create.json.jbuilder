@@ -1,1 +1,1 @@
-json.session_key session.id
+json.session_key @session.token
