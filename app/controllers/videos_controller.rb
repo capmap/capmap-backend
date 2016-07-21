@@ -4,7 +4,11 @@ class VideosController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @videos = Video.all
+    if current_user
+      @videos = current_user.videos
+    else
+      @videos = Video.all
+    end
   end
 
   def new
@@ -39,8 +43,6 @@ class VideosController < ApplicationController
     end
 
     def error_on_bad_token
-      logger.info(params[:sessionKey].present?)
-      logger.info(current_user == nil)
       if params[:sessionKey].present? && current_user == nil
         render text: 'Bad session token', status: '400'
       end
