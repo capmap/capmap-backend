@@ -5,13 +5,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:session_token].present?
-      if session = Session.find_by(token: session[:session_token])
-        return session.user
-      end
+      @session = Session.find_by(token: session[:session_token])
+      return @session.user if @session
     elsif params[:sessionKey].present?
-      if session = Session.find_by(token: params[:sessionKey])
-        return session.user
-      end
+      @session = Session.find_by(token: params[:sessionKey])
+      return @session.user if @session
     end
 
     return nil
