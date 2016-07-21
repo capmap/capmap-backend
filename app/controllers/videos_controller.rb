@@ -11,7 +11,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video: params[:video], latitude: params[:latitude], longitude: params[:longitude])
+    @video = Video.new(video: params[:video], latitude: params[:latitude], longitude: params[:longitude], user: current_user)
     if @video.save
       redirect_to @video
     else

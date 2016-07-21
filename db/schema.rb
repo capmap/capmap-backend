@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713173855) do
+ActiveRecord::Schema.define(version: 20160721143545) do
 
   create_table "users", force: :cascade do |t|
     t.string   "oauth_google"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20160713173855) do
     t.datetime "updated_at",                                                     null: false
     t.decimal  "latitude",           precision: 15, scale: 10, default: 25.7516
     t.decimal  "longitude",          precision: 15, scale: 10, default: -80.167
+    t.integer  "user_id"
   end
+
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
 end
