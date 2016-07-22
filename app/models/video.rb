@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+  belongs_to :user
   has_attached_file :video, styles: {thumb: ["150x200#", :png]}
   validates_attachment_content_type :video, content_type: /\Avideo/
   validates_attachment_presence :video

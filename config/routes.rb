@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :videos
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
